@@ -1,0 +1,79 @@
+Create the following tables with the given structures and insert sample data as specified: -
+A) SALESPEOPLE
+    Snum int(4) 
+    Sname varchar(10) 
+    City varchar(10) 
+    Comm float(3,2)
+
+mysql> CREATE TABLE SALESPEOPLE
+    -> (
+    -> SNUM INT(4),
+    -> SNAME VARCHAR(10),
+    -> CITY VARCHAR(10),
+    -> COMM FLOAT(3,2)
+    -> );
+
+mysql> INSERT INTO SALESPEOPLE(SNUM,SNAME,CITY,COMM)
+    -> VALUES(1001, 'PEEL', 'LONDON', 0.12),
+    -> (1002, 'SERRES', 'SAN JOSE', 0.13),
+    -> (1004, 'MORTIKA', 'LONDON', 0.11),
+    -> (1007, 'RIFKIN', 'BARCELONA', 0.15),
+    -> (1003, 'AXELROD', 'NEW YORK', 0.10);
+
+B) CUSTOMERS
+     Cnum int(4) 
+     Cname varchar(10) 
+     City varchar(10) 
+     Rating int(4) 
+     Snum int(4)
+
+mysql> CREATE TABLE CUSTOMERS
+    -> (
+    -> CNUM INT(4),
+    -> CNAME VARCHAR(10),
+    -> CITY VARCHAR(10),
+    -> RATING INT(4)
+    -> SNUM INT(4),
+    -> );
+
+mysql> INSERT INTO SALESPEOPLE(CNUM,CNAME,CITY,RATING, SNUM)
+    -> VALUES(2001, 'HOFFMAN', 'LONDON', 100, 1001),
+    -> (2002, 'GIOVANNI', 'ROME',200, 1003),
+    -> (2003, 'LIU', 'SAN JOSE', 200, 1003),
+    -> (2004, 'GRASS', 'BERLIN', 300, 1002),
+    -> (2006, 'CLEMENS', 'LONDON', 100, 1001)
+    -> (2008, 'CISNEROS', 'SAN JOSE', 300, 1007)
+    -> (2007, 'PEREIRA', 'ROME', 100, 1004);
+
+
+C) ORDERS
+     Onum int(4) 
+     Amt float(7,2) 
+     Odate date 
+     Cnum int(4) 
+     Snum int(4)
+
+mysql> CREATE TABLE ORDERS
+    -> (
+    -> ONUM INT(4),
+    -> AMT FLOAT(7,2),
+    -> ODATE DATE,
+    -> CNUM INT(4)
+    -> SNUM INT(4),
+    -> );
+
+mysql> INSERT INTO ORDERS(ONUM,AMT,ODATE,CNUM, SNUM)
+    -> VALUES(3001, 18.69, '1990-10-03', 2008, 1007),
+    -> (3003, 767.19, '1990-10-03',2001, 1001),
+    -> (3002, 1900.10, '1990-10-03', 2007, 1004),
+    -> (3005, 5160.45, '1990-10-03', 2003, 1002),
+    -> (3006, 1098.16, '1990-10-03', 2008, 1007)
+    -> (3009, 1713.23, '1990-10-04', 2002, 1003)
+    -> (3007, 75.75, '1990-10-04', 2004, 1002);
+    -> (3008, 4723.00, '1990-10-05', 2006, 1001);
+    -> (3010, 1309.95, '1990-10-06', 2004, 1002);
+    -> (3011, 9891.88, '1990-10-06', 2006, 1001);
+
+
+
+

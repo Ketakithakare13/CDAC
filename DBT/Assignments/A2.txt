@@ -1,0 +1,23 @@
+                               Assignment –2
+                         Introducing Relational Databases.
+
+1) Which field of the Customers table is the primary key?
+
+=> CNUM field of the Customers table is the primary key.
+
+2) What is the 4th column of the Customers table?
+
+=> RATING  is the 4th column of the Customers table.
+
+3) What is another word for row? For column?
+
+=> Another word for row is tuple, Entity & another word for columns is attributes, Keys
+
+4) Why isn’t it possible to see the first five rows of a table?
+
+=> It is not possible to see the first five rows of a table because SQL tables don’t have a specific "order" by default. Rows are stored in the order the database finds efficient, not necessarily the order they were inserted. To see specific rows, you need to tell the database how to sort the data (e.g., using ORDER BY) and then limit the number of rows with LIMIT.
+
+
+ 
+
+ 
