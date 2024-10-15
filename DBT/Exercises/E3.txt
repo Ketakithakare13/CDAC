@@ -1,0 +1,44 @@
+                                 SQL Exercise 3
+
+1. Display all the Supplier names with the initial letter capital.
+=>
+mysql> SELECT CONCAT(UPPER(SUBSTR(SNAME, 1, 1)), LOWER(SUBSTR(SNAME,2)))
+    -> FROM SUPPLIER;
+
+2. Display all the Supplier names in upper case.
+=>
+mysql> SELECT UPPER(SNAME) FROM SUPPLIER;
+
+3. Display all the Supplier names in lower case.
+=>
+mysql> SELECT LOWER(SNAME) FROM SUPPLIER;
+
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+=>
+mysql> SELECT LPAD(SNAME, 25 , '') FROM SUPPLIER;
+
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+=>
+mysql> SELECT REPLACE(SNAME , 'LA', 'RO') FROM SUPPLIER;
+
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced
+with ‘o’.
+=>
+mysql> SELECT REPLACE(REPLACE(SNAME, 'L', 'R'), 'A', 'O') FROM SUPPLIER;
+
+7. Display the Supplier names and the lengths of the names.
+=>
+mysql> SELECT LENGTH(SNAME) FROM SUPPLIER;
+
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.
+=>
+mysql> SELECT SNAME FROM SUPPLIER
+    -> WHERE SOUNDEX(SNAME) = SOUNDEX('BLOKE');
+
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+=>
+mysql> SELECT REPLACE(REPLACE(REPLACE(REPLACE(STATUS, 10, 'TEN'), 20, 'TWENTY'), 30, 'THIRTY'), 40 , 'FOURTY') AS NEWSTATUS FROM SUPPLIER;
+
+10. Display the current day (e.g. Thursday).
+=>
+mysql> SELECT DAYNAME(SYSDATE()) FROM DUAL;

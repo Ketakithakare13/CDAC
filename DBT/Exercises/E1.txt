@@ -1,0 +1,145 @@
+                                  SQL Exercise 1
+
+1. Create the table SEMP with the following structure:- 
+ 
+ EMPNO CHAR(4) 
+ EMPNAME CHAR(20) 
+ BASIC FLOAT 
+ DEPTNO CHAR(2) 
+ DEPTHEAD CHAR(4)
+=> 
+create table SEMP
+(
+ EMPNO CHAR(4), 
+ EMPNAME CHAR(20), 
+ BASIC FLOAT, 
+ DEPTNO CHAR(2), 
+ DEPTHEAD CHAR(4)
+);
+
+2. Create the table SDEPT with the following structure:- 
+ DEPTNO CHAR(2) 
+ DEPTNAME CHAR(15)
+=>
+create table SDEPT
+(
+ DEPTNO CHAR(2), 
+ DEPTNAME CHAR(15)
+);
+
+3.Insert into the SDEPT table the following values:- 
+10, Development 
+20, Training
+=>
+insert into SDEPT(DEPTNO, DEPTNO)
+values
+('10', 'Development'),
+('20', 'Training');
+
+4.Insert into the SEMP table the following values:- 
+0001, SUNIL, 6000, 10 
+0002, HIREN, 8000, 20 
+0003, ALI, 4000, 10, 0001 
+0004, GEORGE, 6000, 0002
+=>
+insert into SEMP(EMPNO, EMPNAME, BASIC, DEPTNO, DEPTHEAD)
+values
+('0001', 'SUNIL', 6000, '10', ''), 
+('0002', 'HIREN', 8000, '20', ''), 
+('0003', 'ALI', 4000, '10', '0001'), 
+('0004', 'GEORGE', 6000, '', '0002');
+
+
+
+mysql> create table SUPPLIER
+    ->     (
+    ->     `S#` varchar(5) primary key,
+    ->     SNAME varchar(20),
+    ->     STATUS int,
+    ->     CITY varchar(30)
+    ->     );
+
+mysql> create table PARTS
+    -> (
+    -> `P#` varchar(10) primary key,
+    -> PNAME varchar(20),
+    -> COLOR varchar(20),
+    -> WEIGHT float,
+    -> CITY varchar(30)
+    -> );
+
+mysql> create table PROJECT
+    -> (
+    -> `J#` VARCHAR(10),
+    -> JNAME VARCHAR(20),
+    -> CITY VARCHAR(30)
+    -> );
+
+
+ mysql>  CREATE TABLE SPJ (
+    ->    `S#` VARCHAR(5),
+    ->    `P#` VARCHAR(5),
+    ->    `J#` VARCHAR(5),
+    ->    QTY INT
+    ->    );
+
+5. Display all the data from the S table.
+=>
+mysql> SELECT * FROM SUPPLIER;
+
+6. Display only the S# and SNAME fields from the S table.
+=>
+mysql> SELECT `S#`, SNAME FROM SUPPLIER;
+
+7. Display the PNAME and COLOR from the P table for the CITY=”London”.
+=>
+mysql> SELECT PNAME, COLOR FROM PARTS
+    -> WHERE CITY = 'LONDON';
+
+8. Display all the Suppliers from London.
+=>
+mysql> SELECT * FROM SUPPLIER
+    -> WHERE CITY = 'LONDON';
+
+9. Display all the Suppliers from Paris or Athens.
+=>
+mysql> SELECT * FROM SUPPLIER
+    -> WHERE CITY = 'PARIS' OR 'ATHENS';
+
+10. Display all the Projects in Athens.
+=>
+mysql> SELECT * FROM PROJECT
+    -> WHERE CITY = 'ATHENS';
+
+11. Display all the Partnames with the weight between 12 and 14 (inclusive of both).
+=>
+mysql> SELECT PNAME FROM PARTS
+    -> WHERE WEIGHT BETWEEN 12 AND 14;
+
+12. Display all the Suppliers with a Status greater than or equal to 20.
+=>
+mysql> select status from supplier
+    -> where status >= 20;
+
+13. Display all the Suppliers except the Suppliers from London
+=>
+mysql> select sname from supplier
+    -> where city != 'london';
+
+14. Display only the Cities from where the Suppliers come from.
+=>
+mysql> select distinct city from supplier;
+
+15. Assuming that the Part Weight is in GRAMS, display the same in 
+MILLIGRAMS and KILOGRAMS.
+=>
+mysql> select pname,
+    -> weight as GRAM,
+    -> weight * 1000 as MILIGRAMS,
+    -> weight / 1000.0 as KILOGRAMS
+    -> from parts;
+
+
+
+
+

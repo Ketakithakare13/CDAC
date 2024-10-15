@@ -1,0 +1,48 @@
+                                 SQL Exercise 4
+
+1. Display the minimum Status in the Supplier table.
+=>
+mysql> SELECT MIN(STATUS) FROM SUPPLIER;
+
+2. Display the maximum Weight in the Parts table.
+=>
+mysql> SELECT MAX(WEIGHT) FROM PARTS;
+
+3. Display the average Weight of the Parts.
+=>
+mysql> SELECT AVG(WEIGHT) FROM PARTS;
+
+4. Display the total Quantity sold for part ‘P1’.
+=>
+mysql> SELECT SUM(QTY) FROM SPJ
+    -> WHERE `P#` = 'P1';
+
+5. Display the total Quantity sold for each part.
+=>
+mysql> SELECT SUM(QTY) FROM SPJ;
+
+6. Display the average Quantity sold for each part.
+=>
+mysql> SELECT AVG(QTY) FROM SPJ;
+
+7. Display the maximum Quantity sold for each part, provided the maximum Quantity 
+is greater than 800.
+=>
+mysql> SELECT MAX(QTY) FROM SPJ
+    -> WHERE QTY > 800;
+
+8.
+mysql> SELECT STATUS, COUNT(*) FROM SUPPLIER
+    -> GROUP BY STATUS;
+
+9.
+mysql> SELECT CITY, COUNT(*) FROM PROJECT
+    -> GROUP BY CITY;
+
+10.
+mysql> SELECT COUNT(*) - COUNT(STATUS) FROM SUPPLIER;
+
+11.
+mysql> SELECT REPLACE(REPLACE(REPLACE(STATUS, 10,'TEN'), 20, 'TWENTY'), 30,
+ 'THIRTY') AS STATUS , COUNT(*) AS COUNT FROM SUPPLIER
+    -> GROUP BY STATUS;
