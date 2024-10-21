@@ -1,0 +1,57 @@
+                                   Assignment – 12
+                         Using the operators IN, ANY, and ALL.
+1) Write a query that selects all customers whose ratings are equal to or greater than 
+ANY of Serres’. 
+=>
+mysql> SELECT CNAME, RATING FROM CUSTOMERS
+    -> WHERE RATING >= ANY(SELECT RATING FROM CUSTOMERS WHERE SNUM = (SELECT SNUM FROM SALESPEOPLE WHERE SNAME = 'SERRES') );
++----------+--------+
+| CNAME    | RATING |
++----------+--------+
+| Giovanni |    200 |
+| Liu      |    200 |
+| Grass    |    300 |
+| Cisneros |    300 |
++----------+--------+
+
+2) Write a query using ANY or ALL that will find all salespeople who have no 
+customers located in their city. 
+=>
+mysql> SELECT SNAME , CITY FROM SALESPEOPLE
+    -> WHERE CITY != ALL(SELECT CITY FROM CUSTOMERS);
++---------+-----------+
+| SNAME   | CITY      |
++---------+-----------+
+| Rifkin  | Barcelona |
+| Axelrod | New York  |
++---------+-----------+
+
+3) Write a query that selects all orders for amounts greater than any for the 
+customers in London. 
+=>
+mysql> SELECT CNUM , ONUM , AMT FROM ORDERS
+    -> WHERE AMT > ANY(SELECT CNUM FROM CUSTOMERS WHERE CITY = 'LONDON');
++------+------+---------+
+| CNUM | ONUM | AMT     |
++------+------+---------+
+| 2003 | 3005 | 5160.45 |
+| 2006 | 3008 | 4723.00 |
+| 2006 | 3011 | 9891.88 |
++------+------+---------+
+
+4) Write the above query using MIN or MAX.
+=>
+mysql> SELECT CNUM , ONUM , AMT FROM ORDERS
+    -> WHERE AMT > ANY(SELECT MIN(AMT) FROM ORDERS WHERE CNUM IN(SELECT CNUM
+ FROM CUSTOMERS WHERE CITY = 'LONDON'));
++------+------+---------+
+| CNUM | ONUM | AMT     |
++------+------+---------+
+| 2007 | 3002 | 1900.10 |
+| 2003 | 3005 | 5160.45 |
+| 2008 | 3006 | 1098.16 |
+| 2002 | 3009 | 1713.23 |
+| 2006 | 3008 | 4723.00 |
+| 2004 | 3010 | 1309.95 |
+| 2006 | 3011 | 9891.88 |
++------+------+---------+

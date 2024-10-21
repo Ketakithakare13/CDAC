@@ -1,0 +1,62 @@
+                             Assignment – 15
+                      Using Subqueries with DML Commands.
+
+1) Assume there is a table called Multicust, with all of the same column definitions 
+as Salespeople. Write a command that inserts all salespeople with more than one 
+customer into this table.
+=>
+mysql> CREATE TABLE MULTICUST AS SELECT * FROM SALESPEOPLE;
+mysql> TRUNCATE MULTICUST;
+
+mysql> INSERT INTO MULTICUST(SNUM, SNAME, CITY , COMM)
+    -> SELECT SNUM, SNAME, CITY , COMM FROM SALESPEOPLE
+    -> WHERE SNUM IN (SELECT SNUM FROM CUSTOMERS GROUP BY SNUM HAVING COUNT(*) > 1);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM MULTICUST;
++------+--------+--------+------+
+| Snum | Sname  | City   | Comm |
++------+--------+--------+------+
+| 1001 | Peel   | London | 0.12 |
+| 1004 | Motika | London | 0.11 |
++------+--------+--------+------+
+
+2) Write a command that deletes all customers with no current orders.
+=>
+mysql> DELETE FROM CUSTOMERS
+    -> WHERE CNUM NOT IN (SELECT CNUM FROM ORDERS);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM CUSTOMERS;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    300 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1004 |
+| 2004 | Grass    | Berlin   |    300 | 1004 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    200 | 1004 |
++------+----------+----------+--------+------+
+3) Write a command that increases by twenty percent the commissions of all 
+salespeople with total orders above Rs. 3,000.
+=>
+mysql> UPDATE SALESPEOPLE
+    -> SET COMM  = COMM * 1.20
+    -> WHERE SNUM IN (SELECT SNUM FROM ORDERS GROUP BY SNUM HAVING SUM(AMT) > 3000);
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM SALESPEOPLE;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1001 | Peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.16 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New York  | 0.10 |
+| 1100 | BLANCO  | SAN JOSE  | NULL |
++------+---------+-----------+------+
+6 rows in set (0.00 sec)
