@@ -1,0 +1,81 @@
+                                    SQL Exercise 5
+
+1. Display the Supplier name and the Quantity sold.
+=>
+mysql> SELECT SUPPLIER.SNAME , SUM(SPJ.QTY) FROM SUPPLIER
+    -> JOIN SPJ ON SUPPLIER.`S#` = SPJ.`S#`
+    -> GROUP BY SUPPLIER.SNAME;
+
+2. Display the Part name and Quantity sold.
+=>
+mysql> SELECT PARTS.PNAME , SUM(SPJ.QTY) FROM PARTS
+    -> JOIN SPJ ON PARTS.`P#` = SPJ.`P#`
+    -> GROUP BY PARTS.PNAME;
+
+3. Display the Project name and Quantity sold.
+=>
+mysql> SELECT PROJECT.JNAME, SUM(SPJ.QTY) FROM PROJECT
+    -> JOIN SPJ ON PROJECT.`J#` = SPJ.`J#`
+    -> GROUP BY PROJECT.JNAME;
+
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+=>
+mysql> SELECT SUPPLIER.SNAME, PARTS.PNAME, PROJECT.JNAME, SUM(SPJ.QTY)
+    ->     FROM SUPPLIER
+    ->     JOIN SPJ ON SUPPLIER.`S#` = SPJ.`S#`
+    ->     JOIN PARTS ON PARTS.`P#` = SPJ.`P#`
+    ->     JOIN PROJECT ON PROJECT.`J#` = SPJ.`J#`
+    ->     GROUP BY SUPPLIER.SNAME, PARTS.PNAME, PROJECT.JNAME;
+
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+=>
+mysql> SELECT SUPPLIER.SNAME, PARTS.PNAME , PROJECT.JNAME , SUPPLIER.CITY
+    -> FROM SUPPLIER
+    -> JOIN SPJ ON SUPPLIER.`S#` = SPJ.`S#`
+    -> JOIN PARTS ON PARTS.`P#` = SPJ.`P#`
+    -> JOIN PROJECT ON PROJECT.`J#` = SPJ.`J#`
+    -> WHERE SUPPLIER.CITY = PROJECT.CITY;
+
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold.
+=>
+mysql> SELECT PARTS.PNAME, SUM(SPJ.QTY) FROM PARTS
+    -> JOIN SPJ ON PARTS.`P#` = SPJ.`P#`
+    -> WHERE PARTS.COLOR = 'RED'
+    -> GROUP BY PARTS.PNAME;
+
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+=>
+mysql> SELECT SUPPLIER.SNAME,SUPPLIER.STATUS, SUM(SPJ.QTY) FROM SUPPLIER
+    -> JOIN SPJ ON SUPPLIER.`S#` = SPJ.`S#`
+    -> WHERE SUPPLIER.STATUS = 20
+    -> GROUP BY SUPPLIER.SNAME, SUPPLIER.STATUS;
+
+8. Display all the Parts and Quantity with a Weight > 14.
+=>
+mysql> SELECT PARTS.PNAME, PARTS.WEIGHT, SUM(SPJ.QTY) FROM PARTS
+    -> JOIN SPJ ON PARTS.`P#` = SPJ.`P#`
+    -> WHERE PARTS.WEIGHT > 14
+    -> GROUP BY PARTS.PNAME , PARTS.WEIGHT;
+
+9. Display all the Project names and City, which has bought more than 500 Parts.
+=>
+mysql> SELECT PROJECT.JNAME, PROJECT.CITY FROM PROJECT
+    -> JOIN SPJ ON PROJECT.`J#` = SPJ.`J#`
+    -> GROUP BY PROJECT.JNAME , PROJECT.CITY
+    -> HAVING SUM(SPJ.QTY) > 500;
+
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+=>
+mysql> SELECT PARTS.PNAME,PARTS.WEIGHT, SUM(SPJ.QTY) FROM PARTS
+    -> JOIN SPJ ON PARTS.`P#` = SPJ.`P#`
+    -> WHERE PARTS.WEIGHT < 15
+    -> GROUP BY PARTS.PNAME, PARTS.WEIGHT;
+
+11. Display all the Employee names and the name of their Managers.
+=>
+mysql> SELECT EMP.ENAME , MANAGER.ENAME FROM EMP
+    -> LEFT JOIN EMP MANAGER ON EMP.MID = MANAGER.EMPID;
+
+
+
+
