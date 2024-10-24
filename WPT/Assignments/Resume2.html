@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.resume-container {
+    display: flex;
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.left-column {
+    width: 35%;
+    background-color: #e6e6e6;
+    padding: 20px;
+}
+
+.profile-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.contact-info, .skills, .education {
+    margin-bottom: 30px;
+}
+
+.contact-info h3, .skills h3, .education h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.skills ul {
+    list-style: none;
+    text-align: left;
+}
+
+.skills ul li {
+    margin-bottom: 10px;
+}
+
+.right-column {
+    width: 65%;
+    padding: 30px;
+}
+
+.profile h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.profile p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.pro{
+    font-weight: bold;
+ }
+.proj{
+    margin-top: 8px;
+}
+.line{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: 2px solid black;
+}
+.h{
+    padding: 15px;
+    color: white;
+    background-color: rgb(131, 131, 184);
+}
+</style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="left-column">
+            <div class="profile-pic" style="text-align: center;">
+                <img src="public/images/Ketaki_photo.jpg" alt="Profile Picture">
+            </div>
+            <h1 style="text-align: center;">KETAKI THAKARE</h1>
+            <h2 style="text-align: center;">Software Developer</h2>
+            
+            <section class="contact-info">
+                <h3 style="font-weight: bold;">Contact</h3>
+                <p><span class="bi bi-telephone-fill"></span> +91-9834562472</p>
+                <p><span class="bi bi-house-door-fill"></span> Yavatmal, Maharashtra</p>
+                <p><a href="#" style="text-decoration: none;"><span class="bi bi-envelope"></span> thakareketaki987@gmail.com</a></p>
+                <p><a href="https://linkedin.com/in/ketaki-thakare-66a751226" style="text-decoration: none;"><span class="bi bi-linkedin"></span> LinkedIn</a></p>
+            </section>
+            <div class="line"></div>
+            <section class="skills">
+                <h3 style="font-weight: bold;">Skills</h3>
+                <div style="text-align: center;">
+                    <ul style="list-style-type: disc;">
+                        <li>MERN Stack</li>
+                        <li>Java</li>
+                        <li>MySQL</li>
+                        <li>DSA</li>
+                    </ul>
+                </div>
+            </section>
+            <div class="line"></div>
+            <section class="education">
+                <h3 style="font-weight: bold;">Education</h3>
+                <p><strong>Bachelor of Engineering</strong><br> Jawaharlal Darda Institute Of Engineering & Technology<br> 2019 - 2023 <br>84.25%</p>
+                <!-- <p><strong>HSC</strong><br> Jijamata Sabane Junior Science College<br> 2017-2019</p> -->
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section class="profile">
+                <h3 class="h" style="font-weight: bold;">OBJECTIVE</h3>
+                <p style="text-align: justify;">Recent Computer Engineering graduate with a passion for coding and creating websites, aiming to excel as a Front-end Web Developer. Enthusiastic, fast learner, and always open to new tech opportunities. Eager to make a meaningful impact and grow in the world of technology</p>
+            </section>
+
+            <section class="experience">
+                <h3 class="h" style="font-weight:bold">PROJECTS</h3>
+                <ul>
+                    <br>
+                    <li>
+                        <span class="pro">ONLINE SHOPPING APPLICATION (OSA):</span>
+                        <span style="text-align: justify;">Understanding how to design a shopping online application that allows customers to browser, filter, sort products and create a custom shopping cart.</span>
+                    </li>
+                    <br>
+                    <li>
+                        <span class="pro">ONLINE VIDEO TUTORIAL LIBRARY (OVL):</span>
+                        <span style="text-align: justify;">Understanding how to design a Video Library like YouTube application that allows admin to upload, modify and 
+                            delete videos. Customer can watch videos after register and login.</span>
+                    </li>
+                    <br>
+                    <li>
+                        <span class="pro">Restaurant Website :</span>
+                        <span style="text-align: justify;">Built a responsive restaurant website using HTML , CSS , JavaScript.</span>
+                    </li>
+                    <br>
+                    <li>
+                        <span class="pro">Photography Website :</span>
+                        <span style="text-align: justify;">Built a responsive photography website using HTML , CSS , JavaScript.</span>
+                    </li>
+                    <br>
+                    <li>
+                        <span class="pro">Cloned Websites:</span>
+                        <span style="text-align: justify;">Netflix, Spotify, Amazon, Flipkart.</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
